@@ -1,6 +1,5 @@
 ## Midterm Peoject - Flask application 
-### Team Members: 
-    1. Name: Ishan Jawade    CWID: 885186304     Email: ishanjawade@csu.fullerton.edu
+###  Name: Ishan Jawade    CWID: 885186304     Email: ishanjawade@csu.fullerton.edu
 
 ![Screenshot](./images/PostmanScreenshot.png)
 
@@ -14,13 +13,13 @@ A RESTful API built with Flask and MongoDB that supports:
 ## **Prerequisites**
 - Python 3.8+
 - MongoDB (local or cloud URI)
-- Pipenv (recommended) or pip
+- venv (recommended)
 
 ## **Setup**
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/flask-mongodb-crud-api.git
-    cd flask-mongodb-crud-api
+    git clone https://github.com/IshanJawade/midterm-project.git
+    cd midterm-project
 
 2. **Download dependencies**
     ```bash
@@ -42,4 +41,4 @@ A RESTful API built with Flask and MongoDB that supports:
 | `/auth/items/<item_id>`      | DELETE | Yes           | Delete item by ID                  |
 | `/public/items`              | GET    | No            | List all items (public)            |
 
-Copyright Ishan Jawade 2025
+Copyrights Ishan Jawade 2025
