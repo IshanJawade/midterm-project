@@ -6,6 +6,8 @@ from app.utils.error_handlers import handle_bad_request, handle_unauthorized, ha
 from app.config import allowed_file 
 import os
 from werkzeug.utils import secure_filename
+from app.services.item_service import create_item, update_item, delete_item
+from app.services.auth_service import verify_jwt_token
 
 auth_bp = Blueprint("auth", __name__)
 
@@ -78,3 +80,36 @@ def upload_file():
         }), 201
     else:
         return handle_bad_request("Invalid file type or file size too large")
+
+
+@auth_bp.route('/items', methods=['POST'])
+def add_item():
+    # Verify JWT
+    token = request.headers.get('Authorization').split(' ')[1]
+    payload = verify_jwt_token(token)
+    if not payload:
+        return handle_unauthorized("Invalid token")
+
+    data = request.json
+    create_item(
+        name=data['name'],
+        description=data['description'],
+        username=payload['username']
+    )
+    return jsonify({"message": "Item added"}), 201
+
+@auth_bp.route('/items/<item_id>', methods=['PUT', 'DELETE'])
+def manage_item(item_id):
+    token = request.headers.get('Authorization').split(' ')[1]
+    payload = verify_jwt_token(token)
+    if not payload:
+        return handle_unauthorized("Invalid token")
+
+    if request.method == 'PUT':
+        data = request.json
+        update_item(item_id, data['name'], data['description'])
+        return jsonify({"message": "Item updated"}), 200
+
+    elif request.method == 'DELETE':
+        delete_item(item_id)
+        return jsonify({"message": "Item deleted"}), 200
