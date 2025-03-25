@@ -2,6 +2,8 @@
 ### Team Members: 
     1. Ishan Jawade
 
+![Screenshot](./images/PostmanScreenshot.png)
+
 ## **Features**
 A RESTful API built with Flask and MongoDB that supports:
 - User authentication (JWT)
