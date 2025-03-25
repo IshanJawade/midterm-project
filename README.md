@@ -2,6 +2,8 @@
 ### Team Members: 
     1. Name: Ishan Jawade    CWID: 885186304     Email: ishanjawade@csu.fullerton.edu
 
+![Screenshot](./images/PostmanScreenshot.png)
+
 ## **Features**
 A RESTful API built with Flask and MongoDB that supports:
 - User authentication (JWT)
