@@ -1,6 +1,6 @@
 ## Midterm Peoject - Flask application 
 ### Team Members: 
-    1. Ishan Jawade
+    1. Name: Ishan Jawade    CWID: 885186304     Email: ishanjawade@csu.fullerton.edu
 
 ## **Features**
 A RESTful API built with Flask and MongoDB that supports:
@@ -39,3 +39,5 @@ A RESTful API built with Flask and MongoDB that supports:
 | `/auth/items/<item_id>`      | PUT    | Yes           | Update item by ID                  |
 | `/auth/items/<item_id>`      | DELETE | Yes           | Delete item by ID                  |
 | `/public/items`              | GET    | No            | List all items (public)            |
+
+Copyright Ishan Jawade 2025
