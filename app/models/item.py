@@ -1,4 +1,5 @@
 from app.database import db
+from bson import ObjectId 
 
 
 class Item:
@@ -17,10 +18,10 @@ class Item:
     @staticmethod
     def update_item(item_id, name, description):
         db.items.update_one(
-            {"id": item_id},
+            {"_id": ObjectId(item_id)},  # Use ObjectId
             {"$set": {"name": name, "description": description}}
         )
 
     @staticmethod
     def delete_item(item_id):
-        db.items.delete_one({"id": item_id})
+        db.items.delete_one({"_id": ObjectId(item_id)})  # Use ObjectId
