@@ -28,3 +28,14 @@ A RESTful API built with Flask and MongoDB that supports:
     ```bash
     python app.py
 
+## API Endpoints
+
+| Endpoint                     | Method | Auth Required | Description                        |
+|------------------------------|--------|---------------|------------------------------------|
+| `/auth/login`                | POST   | No            | Login to get JWT token             |
+| `/auth/register`             | POST   | No            | Register new user                  |
+| `/auth/upload`               | POST   | Yes           | Upload file (JWT required)         |
+| `/auth/items`                | POST   | Yes           | Create new item                    |
+| `/auth/items/<item_id>`      | PUT    | Yes           | Update item by ID                  |
+| `/auth/items/<item_id>`      | DELETE | Yes           | Delete item by ID                  |
+| `/public/items`              | GET    | No            | List all items (public)            |
