@@ -1,16 +1,17 @@
+import os
 from flask import Blueprint, request, jsonify, current_app
 from app.config import allowed_file
 from app.services.auth_service import generate_jwt_token, verify_jwt_token
 from app.models.user import User
 from app.utils.error_handlers import handle_bad_request, handle_unauthorized, handle_not_found
 from app.config import allowed_file 
-import os
 from werkzeug.utils import secure_filename
 from app.services.item_service import create_item, update_item, delete_item
 from app.services.auth_service import verify_jwt_token
 
 auth_bp = Blueprint("auth", __name__)
 
+# Create new user
 @auth_bp.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -26,6 +27,7 @@ def register():
     User.create_user(username, password)
     return jsonify({"message": "User registered successfully"}), 201
 
+# Authenticate existing user
 @auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.json
@@ -42,8 +44,10 @@ def login():
     token = generate_jwt_token(username)
     return jsonify({"message": "Login successful", "token": token}), 200
 
+# Upload a file by authenticated user
 @auth_bp.route('/upload', methods=['POST'])
 def upload_file():
+
     # Authentication check
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
@@ -54,7 +58,6 @@ def upload_file():
     if not payload:
         return handle_unauthorized("Invalid or expired token")
     
-    # File upload handling (your original logic with minor adjustments)
     if 'file' not in request.files:
         return handle_bad_request("No file part")
 
@@ -81,7 +84,7 @@ def upload_file():
     else:
         return handle_bad_request("Invalid file type or file size too large")
 
-
+# Create new item 
 @auth_bp.route('/items', methods=['POST'])
 def add_item():
     # Verify JWT
@@ -98,6 +101,7 @@ def add_item():
     )
     return jsonify({"message": "Item added"}), 201
 
+# Update and Delete item
 @auth_bp.route('/items/<item_id>', methods=['PUT', 'DELETE'])
 def manage_item(item_id):
     token = request.headers.get('Authorization').split(' ')[1]

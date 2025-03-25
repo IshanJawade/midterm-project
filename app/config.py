@@ -10,7 +10,7 @@ class Config:
 if not os.path.exists(Config.UPLOAD_FOLDER):
     os.makedirs(Config.UPLOAD_FOLDER)
 
-# Add to config.py
+# Format and size checking for uploading file
 def allowed_file(filename):
     ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'doc', 'docx'}
     return '.' in filename and \
