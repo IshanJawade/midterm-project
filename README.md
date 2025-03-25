@@ -1,5 +1,7 @@
-## Midterm Peoject - Flask application 
-###  Name: Ishan Jawade    CWID: 885186304     Email: ishanjawade@csu.fullerton.edu
+## Midterm Project - Flask application 
+
+### Ishan Jawade    
+CWID: 885186304     Email: ishanjawade@csu.fullerton.edu
 
 ![Screenshot](./images/PostmanScreenshot.png)
 
